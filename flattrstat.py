@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+#FlattrStat is a simple tool to give you some statistics about your flattr revenue.
+#Download the CSV files from Flattr and then run the script in the same folder.
+#
+# Copyright (c) 2012 Lionel Dricot
+#
+# This script is under the WTFPL - Do What The Fuck You Want To Public License
+# Source code: https://github.com/ploum/FlattrStt
+# License : http://sam.zoy.org/wtfpl/
+
 import csv, os
 
 files=os.listdir(".")
