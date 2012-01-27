@@ -53,9 +53,9 @@ for f in files:
 				thing['revenue'] = 0.0
 				dom['things'][url] = thing
 			thing['clicks'] += int(row[5])
-			thing['revenue'] += 0.9*float(row[6].replace(',','.'))
+			thing['revenue'] += float(row[6].replace(',','.'))
 			dom['clicks'] += int(row[5])
-			rev = 0.9*float(row[6].replace(',','.'))
+			rev = float(row[6].replace(',','.'))
 			dom['revenue'] += rev
 
 k = things.keys()
