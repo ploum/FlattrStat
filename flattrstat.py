@@ -10,14 +10,19 @@
 # Source code: https://github.com/ploum/FlattrStt
 # License : http://sam.zoy.org/wtfpl/
 
-import csv, os
+import csv, os, sys
 
 files=os.listdir(".")
 #print files
 things = {}
 
+if len(sys.argv) > 1:
+	arg = sys.argv[1]
+else:
+	arg = ""
+
 for f in files:
-	if f.endswith(".csv"):
+	if f.endswith(".csv") and arg in f:
     		revenue = csv.reader(open(f, 'rb'),delimiter=';')
 		#skipping the first line
 		revenue.next()
