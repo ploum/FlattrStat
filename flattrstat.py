@@ -15,6 +15,8 @@ import csv, os, sys
 files=os.listdir(".")
 #print files
 things = {}
+total_clicks = 0
+total_revenue = 0.0
 
 if len(sys.argv) > 1:
 	arg = sys.argv[1]
@@ -58,7 +60,9 @@ for f in files:
 				thing['revenue'] = 0.0
 				dom['things'][url] = thing
 			thing['clicks'] += int(row[5])
+			total_clicks += int(row[5])
 			thing['revenue'] += float(row[6].replace(',','.'))
+			total_revenue += float(row[6].replace(',','.'))
 			dom['clicks'] += int(row[5])
 			rev = float(row[6].replace(',','.'))
 			dom['revenue'] += rev
@@ -66,6 +70,7 @@ for f in files:
 k = things.keys()
 ord_k = sorted(k, reverse=True ,key=lambda x: things[x]['revenue'])
 
+print "Total: %d generated %.2f €" %(total_clicks,total_revenue)
 for dd in ord_k:
 	d = things[dd]
 	print "%s (%s clicks - %.2f euros)" %(d['domain'],d['clicks'],d['revenue'])
