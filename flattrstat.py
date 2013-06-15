@@ -86,7 +86,9 @@ for dd in ord_k:
 		print "     -> %s clicks/%.2f euros (%s)"\
 					%(t['clicks'],t['revenue'],t['title'])
 
+ord_k = sorted(months.keys())
+
 print "\nMonths:"
-for mm in months:
+for mm in ord_k:
 	m = months[mm]
 	print "%s: %s €" %(mm, m)
