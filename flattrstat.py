@@ -15,6 +15,7 @@ import csv, os, sys
 files=os.listdir(".")
 #print files
 things = {}
+months = {}
 total_clicks = 0
 total_revenue = 0.0
 
@@ -66,11 +67,14 @@ for f in files:
 			dom['clicks'] += int(row[5])
 			rev = float(row[6].replace(',','.'))
 			dom['revenue'] += rev
+			months[row[0]] = months.get(row[0], 0) + rev
 
 k = things.keys()
 ord_k = sorted(k, reverse=True ,key=lambda x: things[x]['revenue'])
 
 print "Total: %d generated %.2f €" %(total_clicks,total_revenue)
+
+print "\nThings:"
 for dd in ord_k:
 	d = things[dd]
 	print "%s (%s clicks - %.2f euros)" %(d['domain'],d['clicks'],d['revenue'])
@@ -81,3 +85,8 @@ for dd in ord_k:
 		t = d['things'][tt]
 		print "     -> %s clicks/%.2f euros (%s)"\
 					%(t['clicks'],t['revenue'],t['title'])
+
+print "\nMonths:"
+for mm in months:
+	m = months[mm]
+	print "%s: %s €" %(mm, m)
